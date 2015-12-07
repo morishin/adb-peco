@@ -1,10 +1,6 @@
 #!/bin/bash
 
-SCRIPT="$0"
-
-if [ -n "`readlink "$SCRIPT"`" ] ; then
-    SCRIPT="`readlink "$SCRIPT"`"
-fi
-
-SCRIPT="`dirname "$SCRIPT"`/adb_peco.sh"
-"$SCRIPT" adb "$@"
+cd $(dirname $0)
+BIN_DIR=$(pwd -P)
+LIB_DIR="$BIN_DIR/../lib"
+"$LIB_DIR/adb_peco.sh" adb "$@"
